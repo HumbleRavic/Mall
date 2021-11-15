@@ -30,7 +30,7 @@
         </javaModelGenerator>
 
         <!-- 生成的Mapper映射文件（XML）的存放位置 -->
-        <sqlMapGenerator targetPackage="mapper" targetProject="D:\idea_workplace\mall\src\main\java">
+        <sqlMapGenerator targetPackage="mapper" targetProject="D:\idea_workplace\mall\src\main\resources">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 

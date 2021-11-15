@@ -6,6 +6,8 @@ import com.java.shop.entity.Company;
 import com.java.shop.entity.CompanyExample;
 import com.java.shop.mapper.CompanyMapper;
 import com.java.shop.service.CompanyService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +26,8 @@ public class CompanyController {
     @Autowired
     private CompanyMapper companyMapper;
 
+    private Logger logger = LoggerFactory.getLogger(CompanyController.class);
+
     /**
      * 新增公司信息
      */
@@ -33,6 +37,7 @@ public class CompanyController {
             int insert = companyService.insert(company);
             return insert == 1;
         } catch (Exception e) {
+            logger.info("新增失败");
             return false;
         }
     }
@@ -46,12 +51,14 @@ public class CompanyController {
             int update = companyService.update(company);
             return update == 1;
         } catch (Exception e) {
+            logger.info("修改失败");
             return false;
         }
     }
 
     /**
      * 根据条件来获取对应的公司信息，条件我认为有公司名称，公司地点
+     *
      */
     @RequestMapping(value = "search", method = RequestMethod.GET)
     public List<Company> searchCompanyDetails(String name, String address, Integer pageNum, Integer pageSize) {
@@ -79,6 +86,7 @@ public class CompanyController {
         try{
             return companyService.remove(id) == 1;
         } catch (Exception e) {
+            logger.info("删除失败");
             return false;
         }
     }
