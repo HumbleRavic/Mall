@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="MybatisGenerator" targetRuntime="mybatis3">
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释
+            如果是true则没有注释，如果false有注释-->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- 数据库连接信息：驱动类 ，连接地址，用户名，密码-->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/job?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC"
+                        userId="root" password="">
+        </jdbcConnection>
+
+        <!-- 默认值 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成的实体类的存放位置 -->
+        <javaModelGenerator targetPackage="com.java.shop.entity" targetProject="D:\idea_workplace\mall\src\main\java">
+            <!-- enableSubPackages：是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="true"/>
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成的Mapper映射文件（XML）的存放位置 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="D:\idea_workplace\mall\src\main\java">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- 生成的mapper接口(JAVA文件)的存放位置 -->
+        <javaClientGenerator targetPackage="com.java.shop.mapper" type="XMLMAPPER" targetProject="D:\idea_workplace\mall\src\main\java">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!-- 指定数据库表 -->
+        <table tableName="company" enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+    </context>
+</generatorConfiguration>
